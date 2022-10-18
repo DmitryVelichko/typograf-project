@@ -1,0 +1,9 @@
+.containerForCopyButton {
+    position: relative;
+}
+
+.button2 {
+    position: absolute;
+    top: -160px;
+    right: -60px;
+  }

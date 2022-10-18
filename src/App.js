@@ -12,8 +12,6 @@ import ClipboardCopy from './ClipboardCopy'
 function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [text, setText] = useState('');
-  const [copySuccess, setCopySuccess] = useState('');
-  const textAreaRef = useRef(null);
 
   const { TextArea } = Input;
   const { Text } = Typography;
@@ -33,20 +31,9 @@ function App() {
     }
   };
 
-  const copyToClipboard = (e) => {
-    let text = document.getElementsByClassName('input1');
-    text[0].select();
-    document.execCommand('copy');
-    // This is just personal preference.
-    // I prefer to not show the whole text area selected.
-    e.target.focus();
-    setCopySuccess('Copied!');
-    alert('!!!!');
-  };
-
   useEffect(() => {}, [text]);
 
-  useEffect(() => {}, [copySuccess]);
+
 
   return (
     <div className='App'>
@@ -64,7 +51,7 @@ function App() {
       <Button onClick={handleClick} type='primary' className='button1'>
         Подготовить текст к публикации
       </Button>
-      <ClipboardCopy copyText={text} />
+    
 
       {isVisible && (
         <div className='container2'>
@@ -78,9 +65,7 @@ function App() {
             placeholder='Скопируйте сюда ваш шедевр мировой литературы'
             value={text}
           />
-          {copySuccess && <span>{copySuccess}</span>}
-
-          
+            <ClipboardCopy copyText={text} />
         </div>
       )}
     </div>

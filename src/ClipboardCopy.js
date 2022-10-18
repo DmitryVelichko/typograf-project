@@ -32,7 +32,7 @@ export default function ClipboardCopy({ copyText }) {
   };
 
   return (
-    <div>
+    <div className='containerForCopyButton'>
       <Button
         type='primary'
         icon={<CopyOutlined />}
