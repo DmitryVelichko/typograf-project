@@ -23,7 +23,7 @@ export default function ClipboardCopy({ copyText }) {
         // If successful, update the isCopied state value
         setIsCopied(true);
         setTimeout(() => {
-          setIsCopied(false);
+          setIsCopied(false);//
         }, 1500);
       })
       .catch((err) => {
@@ -39,6 +39,7 @@ export default function ClipboardCopy({ copyText }) {
         className='button2'
         onClick={handleCopyClick}
       />
+      {isCopied && <button className='copied'>Скопировано!</button>}
     </div>
   );
 }
