@@ -30,3 +30,15 @@ export default function ClipboardCopy({ copyText }) {
         console.log(err);
       });
   };
+
+  return (
+    <div>
+      <Button
+        type='primary'
+        icon={<CopyOutlined />}
+        className='button2'
+        onClick={handleCopyClick}
+      />
+    </div>
+  );
+}
