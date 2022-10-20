@@ -1,20 +1,17 @@
 import { Input } from 'antd';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Button } from 'antd';
 import 'antd/dist/antd.css';
 import Typograf from 'typograf';
-import { Typography } from 'antd';
 import Header from './Header';
-import { CopyOutlined } from '@ant-design/icons';
-import ClipboardCopy from './ClipboardCopy'
+import ClipboardCopy from './ClipboardCopy';
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [text, setText] = useState('');
 
   const { TextArea } = Input;
-  const { Text } = Typography;
 
   const onChange = (e) => {
     setText(e.target.value);
@@ -33,7 +30,13 @@ function App() {
 
   useEffect(() => {}, [text]);
 
-
+  // Типографический смайлик
+  Typograf.addRule({
+    name: 'common/other/typographicSmiley',
+    handler: function (text) {
+      return text.replace(/:-\)/g, ':—)');
+    },
+  });
 
   return (
     <div className='App'>
@@ -51,7 +54,6 @@ function App() {
       <Button onClick={handleClick} type='primary' className='button1'>
         Подготовить текст к публикации
       </Button>
-    
 
       {isVisible && (
         <div className='container2'>
@@ -65,7 +67,7 @@ function App() {
             placeholder='Скопируйте сюда ваш шедевр мировой литературы'
             value={text}
           />
-            <ClipboardCopy copyText={text} />
+          <ClipboardCopy copyText={text} />
         </div>
       )}
     </div>

@@ -5,7 +5,6 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-
 }
 
 .input1 textarea {
@@ -47,11 +46,10 @@
 }
 
 .container2 {
- position: relative;
+  position: relative;
 
   justify-content: center;
   align-items: center;
- 
 }
 
 .button2 {
