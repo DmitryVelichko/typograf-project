@@ -40,7 +40,7 @@ function App(): React.FC<Props> {
   Typograf.addRule({
     name: 'common/other/typographicSmiley',
     handler: function (text) {
-      return text.replace(/:-\)/g, ':—)');
+      return text.replace(/:-\)/g, ':-D');
     },
   });
 
