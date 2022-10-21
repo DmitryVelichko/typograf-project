@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Typograf from 'typograf';
 
 const Rule1 = () => {
@@ -8,7 +8,7 @@ const Rule1 = () => {
       return text.replace(/:-\)/g, ':-D');
     },
   });
-  return <div></div>;
+  return undefined;
 };
 
 export default Rule1;

@@ -8,6 +8,7 @@ import 'antd/dist/antd.css';
 import Typograf from 'typograf';
 import Header from '../Header/Header';
 import ClipboardCopy from '../ClipBoardCopy/ClipboardCopy';
+import Rule1 from '../../modules/rule1/Rule1'
 
 type Props = {
   className: string;
@@ -36,16 +37,18 @@ function App(): React.FC<Props> {
 
   useEffect(() => {}, [text]);
 
-  // Типографический смайлик
-  Typograf.addRule({
-    name: 'common/other/typographicSmiley',
-    handler: function (text) {
-      return text.replace(/:-\)/g, ':-D');
-    },
-  });
+  
+  // // Типографический смайлик
+  // Typograf.addRule({
+  //   name: 'common/other/typographicSmiley',
+  //   handler: function (text) {
+  //     return text.replace(/:-\)/g, ':-D');
+  //   },
+  // });
 
   return (
     <div className='App'>
+      <Rule1 />
       <Header />
       <TextArea
         autoFocus={true}
