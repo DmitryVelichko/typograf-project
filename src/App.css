@@ -9,27 +9,19 @@
 
 .input1 textarea {
   height: 280px !important;
-  width: 600px;
+  /* width: 600px; */
   margin-top: 110px;
 }
 
 .input2 textarea {
   height: 280px !important;
-  width: 600px;
+  /* width: 600px; */
 }
 
 .input1,
 .input2 {
   resize: none !important;
-}
-
-.button1 {
-  margin-top: 12px;
-  margin-bottom: 29px;
-}
-
-.button1:hover {
-  transform: scale(1.1);
+  width: 100%;
 }
 
 .text1 {
@@ -46,14 +38,14 @@
 }
 
 .container2 {
-  position: relative;
+  width: 600px;
+} 
 
-  justify-content: center;
+
+.buttonContainer {
+  display: flex;
   align-items: center;
-}
-
-.button2 {
-  position: absolute;
-  top: -160px;
-  right: -620px;
+  justify-content: center;
+  margin-top: 12px;
+  margin-bottom: 29px;
 }

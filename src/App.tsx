@@ -1,15 +1,17 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import { Input } from 'antd';
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Button } from 'antd';
 import 'antd/dist/antd.css';
 import Typograf from 'typograf';
-import Header from './Header';
-import ClipboardCopy from './ClipboardCopy';
+import Header from './components/Header/Header';
+import ClipboardCopy from './components/ClipBoardCopy/ClipboardCopy';
 
-function App() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [text, setText] = useState('');
+function App(): React.FC {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [text, setText] = useState<string>('');
 
   const { TextArea } = Input;
 
@@ -51,12 +53,15 @@ function App() {
         placeholder='Скопируйте сюда ваш шедевр мировой литературы'
       />
 
-      <Button onClick={handleClick} type='primary' className='button1'>
-        Подготовить текст к публикации
-      </Button>
+      <div className='buttonContainer'>
+        <Button onClick={handleClick} type='ghost' className='button1'>
+          Подготовить текст к публикации
+        </Button>
+        <ClipboardCopy copyText={text} />
+      </div>
 
       {isVisible && (
-        <div className='container2'>
+        <>
           <TextArea
             readOnly
             autoFocus={true}
@@ -64,11 +69,25 @@ function App() {
             allowClear={true}
             bordered={true}
             className='input2'
-            placeholder='Скопируйте сюда ваш шедевр мировой литературы'
+           
             value={text}
           />
-          <ClipboardCopy copyText={text} />
-        </div>
+        </>
+      )}
+
+      {isVisible && (
+        <>
+          <TextArea
+            readOnly
+            autoFocus={true}
+            showCount
+            allowClear={true}
+            bordered={true}
+            className='input2'
+            placeholder='Вывод логов'
+            value='Поле с ошибками'
+          />
+        </>
       )}
     </div>
   );

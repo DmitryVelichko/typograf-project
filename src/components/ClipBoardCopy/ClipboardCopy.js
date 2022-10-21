@@ -34,11 +34,11 @@ export default function ClipboardCopy({ copyText }) {
   return (
     <div className='containerForCopyButton'>
       <Button
-        type='primary'
+        type='ghost'
         icon={<CopyOutlined />}
         className='button2'
         onClick={handleCopyClick}
-      />
+      > Скопировать исправленный текст</Button>
       {isCopied && <button className='copied'>Скопировано!</button>}
     </div>
   );
