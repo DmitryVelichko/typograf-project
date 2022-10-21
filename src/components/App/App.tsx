@@ -6,10 +6,14 @@ import './App.css';
 import { Button } from 'antd';
 import 'antd/dist/antd.css';
 import Typograf from 'typograf';
-import Header from './components/Header/Header';
-import ClipboardCopy from './components/ClipBoardCopy/ClipboardCopy';
+import Header from '../Header/Header';
+import ClipboardCopy from '../ClipBoardCopy/ClipboardCopy';
 
-function App(): React.FC {
+type Props = {
+  className: string;
+}
+
+function App(): React.FC<Props> {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [text, setText] = useState<string>('');
 
