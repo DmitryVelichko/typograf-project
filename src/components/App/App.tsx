@@ -5,7 +5,7 @@ import 'antd/dist/antd.css';
 
 import Header from '../Header';
 import ClipboardCopy from '../ClipBoardCopy';
-import Rule1 from '../../modules/rule1/Rule1'
+import RuleEmDash from '../../modules/RuleEmDash';
 import './App.css';
 
 const App: React.FC = () => {
@@ -31,7 +31,6 @@ const App: React.FC = () => {
 
   useEffect(() => {}, [text]);
 
-  
   // // Типографический смайлик
   // Typograf.addRule({
   //   name: 'common/other/typographicSmiley',
@@ -42,7 +41,7 @@ const App: React.FC = () => {
 
   return (
     <div className='App'>
-      <Rule1 />
+      <RuleEmDash />
       <Header />
       <TextArea
         autoFocus={true}
@@ -70,7 +69,6 @@ const App: React.FC = () => {
             allowClear={true}
             bordered={true}
             className='input2'
-           
             value={text}
           />
         </>
@@ -92,6 +90,6 @@ const App: React.FC = () => {
       )}
     </div>
   );
-}
+};
 
 export default App;
