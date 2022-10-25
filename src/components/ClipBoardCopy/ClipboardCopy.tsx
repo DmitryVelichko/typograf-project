@@ -1,13 +1,18 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { CopyOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
+
 import './ClipboardCopy.css';
 
-export default function ClipboardCopy({ copyText }) {
+type Props = {
+  copyText: string;
+};
+
+const ClipboardCopy: React.FC<Props> = ({ copyText }) => {
   const [isCopied, setIsCopied] = useState(false);
 
   // This is the function we wrote earlier
-  async function copyTextToClipboard(text) {
+  async function copyTextToClipboard(text: string) {
     if ('clipboard' in navigator) {
       return await navigator.clipboard.writeText(text);
     } else {
@@ -43,3 +48,5 @@ export default function ClipboardCopy({ copyText }) {
     </div>
   );
 }
+
+export default ClipboardCopy;

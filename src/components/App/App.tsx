@@ -1,26 +1,20 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-import { Input } from 'antd';
 import React, { useState, useEffect } from 'react';
-import './App.css';
-import { Button } from 'antd';
-import 'antd/dist/antd.css';
 import Typograf from 'typograf';
-import Header from '../Header/Header';
-import ClipboardCopy from '../ClipBoardCopy/ClipboardCopy';
+import { Input, Button } from 'antd';
+import 'antd/dist/antd.css';
+
+import Header from '../Header';
+import ClipboardCopy from '../ClipBoardCopy';
 import Rule1 from '../../modules/rule1/Rule1'
+import './App.css';
 
-type Props = {
-  className: string;
-}
-
-function App(): React.FC<Props> {
+const App: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [text, setText] = useState<string>('');
 
   const { TextArea } = Input;
 
-  const onChange = (e) => {
+  const onChange: React.ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     setText(e.target.value);
     setIsVisible(false);
   };
