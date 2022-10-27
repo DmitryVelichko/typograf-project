@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import Typograf from 'typograf';
 import { Input, Button } from 'antd';
 import 'antd/dist/antd.css';
-
 import Header from '../Header';
 import ClipboardCopy from '../ClipBoardCopy';
-import RuleEmDash from '../../modules/RuleEmDash';
+import RuleTypograf from '../../modules/RuleTypograf';
 import './App.css';
 
 const App: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [text, setText] = useState<string>('');
-
   const { TextArea } = Input;
 
   const onChange: React.ChangeEventHandler<HTMLTextAreaElement> = (e) => {
@@ -21,7 +18,8 @@ const App: React.FC = () => {
 
   const handleClick = () => {
     setIsVisible(true);
-    var tp = new Typograf({ locale: ['ru', 'en-US'] });
+    
+    var tp = RuleTypograf(text)
     setText(tp.execute(text));
     if (text === '') {
       alert('Введите, пожалуйста, текст! Поле не может быть пустым.');
@@ -41,7 +39,6 @@ const App: React.FC = () => {
 
   return (
     <div className='App'>
-      <RuleEmDash />
       <Header />
       <TextArea
         autoFocus={true}
