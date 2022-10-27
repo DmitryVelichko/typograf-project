@@ -3,7 +3,7 @@ import { Input, Button } from 'antd';
 import 'antd/dist/antd.css';
 import Header from '../Header';
 import ClipboardCopy from '../ClipBoardCopy';
-import RuleTypograf from '../../modules/RuleTypograf';
+import ruleTypograf from '../../modules/ruleTypograf';
 import './App.css';
 
 const App: React.FC = () => {
@@ -18,9 +18,8 @@ const App: React.FC = () => {
 
   const handleClick = () => {
     setIsVisible(true);
-    
-    var tp = RuleTypograf(text)
-    setText(tp.execute(text));
+    let result = ruleTypograf(text);
+    setText(result);
     if (text === '') {
       alert('Введите, пожалуйста, текст! Поле не может быть пустым.');
       setIsVisible(false);

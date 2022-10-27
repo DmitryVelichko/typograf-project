@@ -2,9 +2,10 @@
 
 import Typograf from 'typograf';
 
-const RuleTypograf = (text: string) => {
+const ruleTypograf = (text: string) => {
   let tp = new Typograf({ locale: ['ru', 'en-US'] });
-  return tp;
+  let result = tp.execute(text)
+  return result;
 };
 
-export default RuleTypograf;
+export default ruleTypograf;
