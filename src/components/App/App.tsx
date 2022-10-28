@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import React, { useState, useEffect } from 'react';
 import { Input, Button } from 'antd';
 import 'antd/dist/antd.css';
@@ -5,8 +7,11 @@ import Header from '../Header';
 import ClipboardCopy from '../ClipBoardCopy';
 import ruleTypograf from '../../modules/ruleTypograf';
 import './App.css';
+const reactDiffView = require('react-diff-view');
+// import * as reactDiffView from 'react-diff-view'
+// import { parseDiff, Diff, Hunk } from reactDiffView;
 
-const App: React.FC = () => {
+const App: React.FC = ({ diffText }: any) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [text, setText] = useState<string>('');
   const { TextArea } = Input;
@@ -36,9 +41,32 @@ const App: React.FC = () => {
   //   },
   // });
 
+  // Библиотека для сравнения текста react-diff-view
+  // https://www.npmjs.com/package/react-diff-view
+
+  const files = reactDiffView.parseDiff('diffText');
+
+  const renderFile = ({ oldRevision, newRevision, type, hunks }: any) => (
+    <reactDiffView.Diff
+      key={oldRevision + '-' + newRevision}
+      viewType='split'
+      diffType={type}
+      hunks={hunks}
+    >
+      {(hunks: any): any =>
+        hunks.map((hunk: any): any => (
+          <reactDiffView.Hunk key={hunk.content} hunk={hunk} />
+        ))
+      }
+    </reactDiffView.Diff>
+  );
+
   return (
     <div className='App'>
       <Header />
+      <div style={{ height: '100px', width: '100px' }}>
+        {files.map(renderFile)}
+      </div>
       <TextArea
         autoFocus={true}
         showCount
