@@ -6,6 +6,7 @@ import 'antd/dist/antd.css';
 import Header from '../Header';
 import ClipboardCopy from '../ClipBoardCopy';
 import ruleTypograf from '../../modules/ruleTypograf';
+import ruleCheckCurseWords from '../../modules/ruleCheckCurseWords';
 import './App.css';
 const reactDiffView = require('react-diff-view');
 // import * as reactDiffView from 'react-diff-view'
@@ -23,8 +24,9 @@ const App: React.FC = ({ diffText }: any) => {
 
   const handleClick = () => {
     setIsVisible(true);
-    let result = ruleTypograf(text);
-    setText(result);
+    let typografedText = ruleTypograf(text);
+    let checkedForCurseWordsText = ruleCheckCurseWords(typografedText);
+    setText(checkedForCurseWordsText);
     if (text === '') {
       alert('Введите, пожалуйста, текст! Поле не может быть пустым.');
       setIsVisible(false);
@@ -64,9 +66,7 @@ const App: React.FC = ({ diffText }: any) => {
   return (
     <div className='App'>
       <Header />
-      <div style={{ height: '100px', width: '100px' }}>
-        {files.map(renderFile)}
-      </div>
+      <div>{files.map(renderFile)}</div>
       <TextArea
         autoFocus={true}
         showCount
