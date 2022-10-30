@@ -9,3 +9,9 @@ const myFilter = new replaceDisallowedWords({
   additionalWords: 'ругательство1, ругательство2',
 }); // через запятую можно добавить стоп-слова
 
+const ruleCheckCurseWords = (text: string) => {
+  let checkedText = myFilter.replace(text, '***', true);
+  return checkedText;
+};
+
+export default ruleCheckCurseWords;
