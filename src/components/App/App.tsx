@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import React, { useState, useEffect } from 'react';
 import { Input, Button } from 'antd';
 import 'antd/dist/antd.css';
@@ -9,8 +7,6 @@ import ruleTypograf from '../../modules/ruleTypograf';
 import ruleCheckCurseWords from '../../modules/ruleCheckCurseWords';
 import './App.css';
 const reactDiffView = require('react-diff-view');
-// import * as reactDiffView from 'react-diff-view'
-// import { parseDiff, Diff, Hunk } from reactDiffView;
 
 const App: React.FC = ({ diffText }: any) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -34,14 +30,6 @@ const App: React.FC = ({ diffText }: any) => {
   };
 
   useEffect(() => {}, [text]);
-
-  // // Типографический смайлик
-  // Typograf.addRule({
-  //   name: 'common/other/typographicSmiley',
-  //   handler: function (text) {
-  //     return text.replace(/:-\)/g, ':-D');
-  //   },
-  // });
 
   // Библиотека для сравнения текста react-diff-view
   // https://www.npmjs.com/package/react-diff-view
